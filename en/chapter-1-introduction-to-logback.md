@@ -22,7 +22,7 @@ Let us now begin experimenting with logback.
 
 ```java
 package chapters.introduction;
- 
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,11 +38,27 @@ public class HelloWorld1 {
 }
 ```
 
-HelloWorld1 class is defined in the chapters.introduction package. It starts by importing the Logger and LoggerFactory classes defined in the SLF4J API, specifically within the org.slf4j package.
+**HelloWorld1** class is defined in the _chapters.introduction_ package. It starts by importing the [Logger](http://slf4j.org/api/org/slf4j/Logger.html) and [LoggerFactory](http://slf4j.org/api/org/slf4j/LoggerFactory.html) classes defined in the **SLF4J API**, specifically within the _org.slf4j_ package.
 
-On the first line of the main\(\) method, the variable named logger is assigned a Logger instance retrieved by invoking the static getLogger method from the LoggerFactory class. This logger is named "chapters.introduction.HelloWorld1". The main method proceeds to call the debug method of this logger passing "Hello World" as an argument. We say that the main method contains a logging statement of level DEBUG with the message "Hello world".
+On the first line of the _**main\(\)**_ method, the variable named _logger_ is assigned a **Logger **instance retrieved by invoking the static _**getLogger **_method from the **LoggerFactory **class. This logger is named "chapters.introduction.HelloWorld1". The main method proceeds to call the _**debug **_method of this logger passing "Hello World" as an argument. We say that the main method contains a logging statement of level DEBUG with the message "Hello world".
 
-Note that the above example does not reference any logback classes. In most cases, as far as logging is concerned, your classes will only need to import SLF4J classes. Thus, the vast majority, if not all, of your classes will use the SLF4J API and will be oblivious to the existence of logback.
+Note that the above example does not reference any logback classes. In most cases, as far as logging is concerned, your classes will only need to import **SLF4J **classes. Thus, the vast majority, if not all, of your classes will use the SLF4J API and will be oblivious to the existence of logback.
 
-You can launch the first sample application, chapters.introduction.HelloWorld1 with the command:
+You can launch the first sample application, _chapters.introduction.HelloWorld1_ with the command:
+
+```bash
+java chapters.introduction.HelloWorld1
+```
+
+Launching the **HelloWorld1** application will output a single line on the console. By virtue of logback's default configuration policy, when no default configuration file is found, logback will add a **ConsoleAppender** to the root logger.
+
+
+
+```bash
+20:49:07.962 [main] DEBUG chapters.introduction.HelloWorld1 - Hello world.
+```
+
+Logback can report information about its internal state using a built-in status system. Important events occurring during logback's lifetime can be accessed through a component called **StatusManager**. For the time being, let us instruct logback to print its internal state by invoking the static **_print()_** method of the **StatusPrinter** class.
+
+**Example: Printing Logger Status** ([logback-examples/src/main/java/chapters/introduction/HelloWorld2.java](https://logback.qos.ch/xref/chapters/introduction/HelloWorld2.html))
 
