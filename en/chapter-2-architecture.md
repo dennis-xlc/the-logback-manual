@@ -183,9 +183,6 @@ In a more graphic way, here is how the selection rule works. In the following ta
       <td>YES</td>
       <td>NO</td>
    </tr>
-   <tr>
-      <td></td>
-   </tr>
 </table>
 
 
