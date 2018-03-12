@@ -5,10 +5,10 @@
 > **—CHARLES DARWIN,**_**The Origin of Species**_
 
 
+
 > _It is difficult, if not impossible, for anyone to learn a subject purely by reading about it, without applying the information to specific problems and thereby forcing himself to think about what has been read. Furthermore, we all learn best the things that we have discovered ourselves._
 >
 > **—DONALD KNUTH,**_**The Art of Computer Programming**_
-
 
 ## Logback's architecture
 
@@ -26,8 +26,9 @@ The **Logger** class is part of the logback-classic module. On the other hand, t
 
 Loggers are named entities. Their names are case-sensitive and they follow the hierarchical naming rule:
 
-Named Hierarchy
-A logger is said to be an ancestor of another logger if its name followed by a dot is a prefix of the descendant logger name. A logger is said to be a parent of a child logger if there are no ancestors between itself and the descendant logger.
+> **Named Hierarchy**  
+> _A logger is said to be an ancestor of another logger if its name followed by a dot is a prefix of the descendant logger name. A logger is said to be a parent of a child logger if there are no ancestors between itself and the descendant logger._
+
 
 
 
