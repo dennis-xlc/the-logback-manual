@@ -131,5 +131,63 @@ In a more graphic way, here is how the selection rule works. In the following ta
 | **p=WARN** | YES | YES | YES | YES | **NO** | **NO** |
 | **p=ERROR** | YES | YES | YES | YES | YES | **NO** |
 
+Here is an example of the basic selection rule.
 
 
+
+```java
+import ch.qos.logback.classic.Level;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+....
+
+// get a logger instance named "com.foo". Let us further assume that the
+// logger is of type  ch.qos.logback.classic.Logger so that we can
+// set its level
+ch.qos.logback.classic.Logger logger = 
+        (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("com.foo");
+//set its Level to INFO. The setLevel() method requires a logback logger
+logger.setLevel(Level. INFO);
+
+Logger barlogger = LoggerFactory.getLogger("com.foo.Bar");
+
+// This request is enabled, because WARN >= INFO
+logger.warn("Low fuel level.");
+
+// This request is disabled, because DEBUG < INFO. 
+logger.debug("Starting search for nearest gas station.");
+
+// The logger instance barlogger, named "com.foo.Bar", 
+// will inherit its level from the logger named 
+// "com.foo" Thus, the following request is enabled 
+// because INFO >= INFO. 
+barlogger.info("Located nearest gas station.");
+
+// This request is disabled, because DEBUG < INFO. 
+barlogger.debug("Exiting gas station search");
+```
+
+### Retrieving Loggers
+
+Calling the **_LoggerFactory.getLogger_** method with the same name will always return a reference to the exact same logger object.
+
+For example, in
+```java
+Logger x = LoggerFactory.getLogger("wombat"); 
+Logger y = LoggerFactory.getLogger("wombat");
+```
+`x` and `y` refer to **_exactly_** the same logger object.
+
+
+Thus, it is possible to configure a logger and then to retrieve the same instance somewhere else in the code without passing around references. In fundamental contradiction to biological parenthood, where parents always precede their children, logback loggers can be created and configured in any order. In particular, a "parent" logger will find and link to its descendants even if it is instantiated after them.
+
+Configuration of the logback environment is typically done at application initialization. The preferred way is by reading a configuration file. This approach will be discussed shortly.
+
+Logback makes it easy to name loggers by _software component_. This can be accomplished by instantiating a logger in each class, with the logger name equal to the fully qualified name of the class. This is a useful and straightforward method of defining loggers. As the log output bears the name of the generating logger, this naming strategy makes it easy to identify the origin of a log message. However, this is only one possible, albeit common, strategy for naming loggers. Logback does not restrict the possible set of loggers. As a developer, you are free to name loggers as you wish.
+
+Nevertheless, naming loggers after the class where they are located seems to be the best general strategy known so far.
+
+
+### Appenders and Layouts
+
+The ability to selectively enable or disable logging requests based on their logger is only part of the picture. Logback allows logging requests to print to multiple destinations. In logback speak, an output destination is called an appender. Currently, appenders exist for the console, files, remote socket servers, to MySQL, PostgreSQL, Oracle and other databases, JMS, and remote UNIX Syslog daemons.
