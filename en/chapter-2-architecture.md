@@ -191,3 +191,17 @@ Nevertheless, naming loggers after the class where they are located seems to be 
 ### Appenders and Layouts
 
 The ability to selectively enable or disable logging requests based on their logger is only part of the picture. Logback allows logging requests to print to multiple destinations. In logback speak, an output destination is called an appender. Currently, appenders exist for the console, files, remote socket servers, to MySQL, PostgreSQL, Oracle and other databases, JMS, and remote UNIX Syslog daemons.
+
+More than one appender can be attached to a logger.
+
+The **_addAppender_** method adds an appender to a given logger. Each enabled logging request for a given logger will be forwarded to all the appenders in that logger as well as the appenders higher in the hierarchy. In other words, appenders are inherited additively from the logger hierarchy. For example, if a console appender is added to the root logger, then all enabled logging requests will at least print on the console. If in addition a file appender is added to a logger, say **_L_**, then enabled logging requests for **_L_** and **_L_**'s children will print on a file _and_ on the console. It is possible to override this default behavior so that appender accumulation is no longer additive by setting the additivity flag of a logger to false.
+
+The rules governing appender additivity are summarized below.
+
+> **Appender Additivity**  
+> The output of a log statement of logger L will go to all the appenders in L and its ancestors. This is the meaning of the term "appender additivity".
+
+However, if an ancestor of logger L, say P, has the additivity flag set to false, then L's output will be directed to all the appenders in L and its ancestors up to and including P but not the appenders in any of the ancestors of P.
+
+Loggers have their additivity flag set to true by default.
+
