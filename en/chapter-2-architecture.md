@@ -27,5 +27,13 @@ Loggers are named entities. Their names are case-sensitive and they follow the h
 > **Named Hierarchy**  
 > _A logger is said to be an ancestor of another logger if its name followed by a dot is a prefix of the descendant logger name. A logger is said to be a parent of a child logger if there are no ancestors between itself and the descendant logger._
 
+```
+[i]
+```
 
+```
+[i]
+```
+
+\[i\] hewrwerwrwr
 
