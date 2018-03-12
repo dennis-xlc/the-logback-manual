@@ -40,7 +40,7 @@ public class HelloWorld1 {
 
 **HelloWorld1** class is defined in the _chapters.introduction_ package. It starts by importing the [Logger](http://slf4j.org/api/org/slf4j/Logger.html) and [LoggerFactory](http://slf4j.org/api/org/slf4j/LoggerFactory.html) classes defined in the **SLF4J API**, specifically within the _org.slf4j_ package.
 
-On the first line of the _**main\(\)**_ method, the variable named _logger_ is assigned a **Logger **instance retrieved by invoking the static _**getLogger **_method from the **LoggerFactory **class. This logger is named "chapters.introduction.HelloWorld1". The main method proceeds to call the _**debug **_method of this logger passing "Hello World" as an argument. We say that the main method contains a logging statement of level DEBUG with the message "Hello world".
+On the first line of the _**main\(\)**_ method, the variable named _logger_ is assigned a **Logger **instance retrieved by invoking the static _**getLogger **\_method from the **LoggerFactory **class. This logger is named "chapters.introduction.HelloWorld1". The main method proceeds to call the _**debug **\_method of this logger passing "Hello World" as an argument. We say that the main method contains a logging statement of level DEBUG with the message "Hello world".
 
 Note that the above example does not reference any logback classes. In most cases, as far as logging is concerned, your classes will only need to import **SLF4J **classes. Thus, the vast majority, if not all, of your classes will use the SLF4J API and will be oblivious to the existence of logback.
 
@@ -52,17 +52,13 @@ java chapters.introduction.HelloWorld1
 
 Launching the **HelloWorld1** application will output a single line on the console. By virtue of logback's default configuration policy, when no default configuration file is found, logback will add a **ConsoleAppender** to the root logger.
 
-
-
 ```
 20:49:07.962 [main] DEBUG chapters.introduction.HelloWorld1 - Hello world.
 ```
 
-Logback can report information about its internal state using a built-in status system. Important events occurring during logback's lifetime can be accessed through a component called **StatusManager**. For the time being, let us instruct logback to print its internal state by invoking the static **_print()_** method of the **StatusPrinter** class.
+Logback can report information about its internal state using a built-in status system. Important events occurring during logback's lifetime can be accessed through a component called **StatusManager**. For the time being, let us instruct logback to print its internal state by invoking the static _**print\(\)**_ method of the **StatusPrinter** class.
 
 **Example: Printing Logger Status** \([logback-examples/src/main/java/chapters/introduction/HelloWorld2.java](https://logback.qos.ch/xref/chapters/introduction/HelloWorld2.html)\)
-
-
 
 ```java
 package chapters.introduction;
@@ -84,9 +80,8 @@ public class HelloWorld2 {
   }
 }
 ```
+
 Running the **HelloWorld2** application will produce the following output:
-
-
 
 ```
 12:49:22.203 [main] DEBUG chapters.introduction.HelloWorld2 - Hello world.
@@ -96,16 +91,31 @@ Running the **HelloWorld2** application will produce the following output:
 12:49:22,093 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Setting up default configuration.
 ```
 
-Logback explains that having failed to find the _logback-test.xml_ and _logback.xml_ configuration files (discussed later), it configured itself using its default policy, which is a basic **ConsoleAppender**. An **Appender** is a class that can be seen as an output destination. Appenders exist for many different destinations including the console, files, Syslog, TCP Sockets, JMS and many more. Users can also easily create their own Appenders as appropriate for their specific situation.
+Logback explains that having failed to find the _logback-test.xml_ and _logback.xml_ configuration files \(discussed later\), it configured itself using its default policy, which is a basic **ConsoleAppender**. An **Appender** is a class that can be seen as an output destination. Appenders exist for many different destinations including the console, files, Syslog, TCP Sockets, JMS and many more. Users can also easily create their own Appenders as appropriate for their specific situation.
 
 Note that in case of errors, logback will automatically print its internal state on the console.
 
 The previous examples are rather simple. Actual logging in a larger application would not be that different. The general pattern for logging statements would not change. Only the configuration process would be different. However, you would probably want to customize or configure logback according to your needs. Logback configuration will be covered in subsequent chapters.
 
-Note that in the above example we have instructed logback to print its internal state by invoking the **_StatusPrinter.print()_** method. Logback's internal status information can be very useful in diagnosing logback-related problems.
+Note that in the above example we have instructed logback to print its internal state by invoking the _**StatusPrinter.print\(\)**_ method. Logback's internal status information can be very useful in diagnosing logback-related problems.
 
 Here is a list of the three required steps in order to enable logging in your application.
 
-Configure the logback environment. You can do so in several more or less sophisticated ways. More on this later.
-In every class where you wish to perform logging, retrieve a Logger instance by invoking the org.slf4j.LoggerFactory class' getLogger() method, passing the current class name or the class itself as a parameter.
-Use this logger instance by invoking its printing methods, namely the debug(), info(), warn() and error() methods. This will produce logging output on the configured appenders.
+1. Configure the logback environment. You can do so in several more or less sophisticated ways. More on this later.
+2. In every class where you wish to perform logging, retrieve a **Logger** instance by invoking the **org.slf4j.LoggerFactory** class' _**getLogger\(\)**_ method, passing the current class name or the class itself as a parameter.
+3. Use this logger instance by invoking its printing methods, namely the _**debug\(\)**_, _**info\(\)**_, _**warn\(\)**_ and _**error\(\)**_ methods. This will produce logging output on the configured appenders.
+
+
+
+## Building logback
+
+As its build tool, logback relies on [Maven](http://maven.apache.org/), a widely-used open-source build tool.
+
+Once you have installed Maven, building the logback project, including all its modules, should be as easy as issuing a`mvn install`command from within the directory where you unarchived the logback distribution. Maven will automatically download the required external libraries.
+
+Logback distributions contain complete source code such that you can modify parts of logback library and build your own version of it. You may even redistribute the modified version, as long as you adhere to the conditions of the LGPL license or the EPL license.
+
+For building logback under an IDE, please see the[relevant section on the class path setup page](https://logback.qos.ch/setup.html#ide).
+
+
+
