@@ -77,5 +77,5 @@ _Example 1_
 | X.Y | none | DEBUG |
 | X.Y.Z | none | DEBUG |
 
-
+In example 1 above, only the root logger is assigned a level. This level value, **DEBUG**, is inherited by the other loggers `X`, `X.Y` and `X.Y.Z`
 
