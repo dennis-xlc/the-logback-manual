@@ -118,3 +118,9 @@ By definition, the printing method determines the level of a logging request. Fo
 
 A logging request is said to be _enabled_ if its level is higher than or equal to the effective level of its logger. Otherwise, the request is said to be _disabled_. As described previously, a logger without an assigned level will inherit one from its nearest ancestor. This rule is summarized below.
 
+> **Basic Selection Rule**  
+> _A log request of level p issued to a logger having an effective level q, is enabled if p >= q._
+
+This rule is at the heart of logback. It assumes that levels are ordered as follows: **TRACE** < **DEBUG** < **INFO** <  **WARN** < **ERROR**.
+
+In a more graphic way, here is how the selection rule works. In the following table, the vertical header shows the level of the logging request, designated by **_p_**, while the horizontal header shows effective level of the logger, designated by **_q_**. The intersection of the rows (level request) and columns (effective level) is the boolean resulting from the basic selection rule.
