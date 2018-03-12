@@ -60,5 +60,5 @@ Launching the **HelloWorld1** application will output a single line on the conso
 
 Logback can report information about its internal state using a built-in status system. Important events occurring during logback's lifetime can be accessed through a component called **StatusManager**. For the time being, let us instruct logback to print its internal state by invoking the static **_print()_** method of the **StatusPrinter** class.
 
-**Example: Printing Logger Status** ([logback-examples/src/main/java/chapters/introduction/HelloWorld2.java](https://logback.qos.ch/xref/chapters/introduction/HelloWorld2.html))
+**Example: Printing Logger Status** \([logback-examples/src/main/java/chapters/introduction/HelloWorld2.java](https://logback.qos.ch/xref/chapters/introduction/HelloWorld2.html)\)
 
