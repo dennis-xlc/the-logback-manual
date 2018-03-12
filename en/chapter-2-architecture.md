@@ -60,9 +60,7 @@ Loggers may be assigned levels. The set of possible levels \(_**TRACE, DEBUG, IN
 
 If a given logger is not assigned a level, then it inherits one from its closest ancestor with an assigned level. More formally:
 
-> The effective level for a given logger _L_, is equal to the first non-null level in its hierarchy, starting at _L _itself and proceeding upwards in the hierarchy towards the root logger.
-
-
+> The effective level for a given logger _L_, is equal to the first non-null level in its hierarchy, starting at \_L \_itself and proceeding upwards in the hierarchy towards the root logger.
 
 To ensure that all loggers can eventually inherit a level, the root logger always has an assigned level. By default, this level is DEBUG.
 
@@ -114,14 +112,31 @@ In example 4 above, the loggers `root` and `X` and are assigned the levels **DEB
 
 ### Printing methods and the basic selection rule
 
-By definition, the printing method determines the level of a logging request. For example, if **L** is a logger instance, then the statement **_L.info("..")_** is a logging statement of level **INFO**.
+By definition, the printing method determines the level of a logging request. For example, if **L** is a logger instance, then the statement _**L.info\(".."\)**_ is a logging statement of level **INFO**.
 
 A logging request is said to be _enabled_ if its level is higher than or equal to the effective level of its logger. Otherwise, the request is said to be _disabled_. As described previously, a logger without an assigned level will inherit one from its nearest ancestor. This rule is summarized below.
 
 > **Basic Selection Rule**  
-> _A log request of level p issued to a logger having an effective level q, is enabled if p >= q._
+> _A log request of level p issued to a logger having an effective level q, is enabled if p &gt;= q._
 
-This rule is at the heart of logback. It assumes that levels are ordered as follows: **TRACE** < **DEBUG** < **INFO** <  **WARN** < **ERROR**.
+This rule is at the heart of logback. It assumes that levels are ordered as follows: **TRACE** &lt; **DEBUG** &lt; **INFO** &lt;  **WARN** &lt; **ERROR**.
 
-In a more graphic way, here is how the selection rule works. In the following table, the vertical header shows the level of the logging request, designated by **_p_**, while the horizontal header shows effective level of the logger, designated by **_q_**. The intersection of the rows (level request) and columns (effective level) is the boolean resulting from the basic selection rule.
+In a more graphic way, here is how the selection rule works. In the following table, the vertical header shows the level of the logging request, designated by _**p**_, while the horizontal header shows effective level of the logger, designated by _**q**_. The intersection of the rows \(level request\) and columns \(effective level\) is the boolean resulting from the basic selection rule.
+
+
+
+| level of request p | TRACE | DEBUG | INFO | WARN | ERROR | OFF |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| TRACE |  |  |  |  |  |  |
+| DEBUG |  |  |  |  |  |  |
+| INFO  |  |  |  |  |  |  |
+| WARN |  |  |  |  |  |  |
+| ERROR |  |  |  |  |  |  |
+| OFF |  |  |  |  |  |  |
+
+
+
+
+
+
 
