@@ -1,4 +1,4 @@
-[](/chapter-1-introduction-to-logback.md)## The Logback Manual
+## The Logback Manual
 
 The complete logback manual documents the latest version of logback framework. In over 150 pages and dozens of concrete examples, it covers both basic and advanced logback features, including:
 
