@@ -79,3 +79,42 @@ _Example 1_
 
 In example 1 above, only the root logger is assigned a level. This level value, **DEBUG**, is inherited by the other loggers `X`, `X.Y` and `X.Y.Z`
 
+_Example 2_
+
+| Logger name | Assigned level | Effective level |
+| :--- | :--- | :--- |
+| root | ERROR | ERROR |
+| X | INFO | INFO |
+| X.Y | DEBUG | DEBUG |
+| X.Y.Z | WARN | WARN |
+
+In example 2 above, all loggers have an assigned level value. Level inheritance does not come into play.
+
+_Example 3_
+
+| Logger name | Assigned level | Effective level |
+| :--- | :--- | :--- |
+| root | DEBUG | DEBUG |
+| X | INFO | INFO |
+| X.Y | none | INFO |
+| X.Y.Z | ERROR | ERROR |
+
+In example 3 above, the loggers `root`, `X` and `X.Y.Z` are assigned the levels **DEBUG**, **INFO** and **ERROR** respectively. Logger `X.Y` inherits its level value from its parent `X`.
+
+_Example 4_
+
+| Logger name | Assigned level | Effective level |
+| :--- | :--- | :--- |
+| root | DEBUG | DEBUG |
+| X | INFO | INFO |
+| X.Y | none | INFO |
+| X.Y.Z | none | INFO |
+
+In example 4 above, the loggers `root` and `X` and are assigned the levels **DEBUG** and **INFO** respectively. The loggers `X.Y` and `X.Y.Z` inherit their level value from their nearest parent `X`, which has an assigned level.
+
+### Printing methods and the basic selection rule
+
+By definition, the printing method determines the level of a logging request. For example, if **L** is a logger instance, then the statement **_L.info("..")_** is a logging statement of level **INFO**.
+
+A logging request is said to be _enabled_ if its level is higher than or equal to the effective level of its logger. Otherwise, the request is said to be _disabled_. As described previously, a logger without an assigned level will inherit one from its nearest ancestor. This rule is summarized below.
+
