@@ -3,7 +3,9 @@
 > _All true classification is genealogical._
 >
 > **—CHARLES DARWIN,**_**The Origin of Species**_
->
+
+
+
 > _It is difficult, if not impossible, for anyone to learn a subject purely by reading about it, without applying the information to specific problems and thereby forcing himself to think about what has been read. Furthermore, we all learn best the things that we have discovered ourselves._
 >
 > **—DONALD KNUTH,**_**The Art of Computer Programming**_
@@ -202,6 +204,17 @@ The rules governing appender additivity are summarized below.
 > _However, if an ancestor of logger **L**, say **P**, has the additivity flag set to false, then **L**'s output will be directed to all the appenders in **L** and its ancestors up to and including **P** but not the appenders in any of the ancestors of **P**._
 >
 > _Loggers have their additivity flag set to true by default._
+
+The table below shows an example:
+
+| Logger Name | Attached Appenders | Additivity Flag | Output Targets | Comment |
+| :--- | :--- | :--- | :--- | :--- |
+| root | A1 | not applicable | A1 | Since the root logger stands at the top of the logger hierarchy, the additivity flag does not apply to it. |
+| x | A-x1, A-x2 | true | A1, A-x1, A-x2 | Appenders of "x" and of root. |
+| x.y | none | true | A1, A-x1, A-x2 | Appenders of "x" and of root. |
+| x.y.z | A-xyz1 | true | A1, A-x1, A-x2, A-xyz1 | Appenders of "x.y.z", "x" and of root. |
+| security | A-sec | false | A-sec | No appender accumulation since the additivity flag is set to false. Only appender A-sec will be used. |
+| security.access | none | true | A-sec | Only appenders of "security" because the additivity flag in "security" is set to false. |
 
 
 
