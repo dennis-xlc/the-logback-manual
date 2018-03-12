@@ -131,7 +131,6 @@ In a more graphic way, here is how the selection rule works. In the following ta
       <td colspan="6">effective level q</td>
    </tr>
    <tr>
-      <td></td>
       <td>TRACE</td>
       <td>DEBUG</td>
       <td>INFO</td>
