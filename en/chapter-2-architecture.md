@@ -127,16 +127,11 @@ In a more graphic way, here is how the selection rule works. In the following ta
 
 <table>
    <tr>
-      <td>level of request p</td>
-      <td colspan='6'>effective level q</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td rowspan="2">level of request p</td>
+      <td colspan="6">effective level q</td>
    </tr>
    <tr>
-      <td></td>
+      <td ></td>
       <td>TRACE</td>
       <td>DEBUG</td>
       <td>INFO</td>
