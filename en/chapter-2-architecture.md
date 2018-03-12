@@ -125,14 +125,69 @@ In a more graphic way, here is how the selection rule works. In the following ta
 
 
 
-| level of request p | TRACE | DEBUG | INFO | WARN | ERROR | OFF |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| TRACE |  |  |  |  |  |  |
-| DEBUG |  |  |  |  |  |  |
-| INFO  |  |  |  |  |  |  |
-| WARN |  |  |  |  |  |  |
-| ERROR |  |  |  |  |  |  |
-| OFF |  |  |  |  |  |  |
+<table>
+   <tr>
+      <td rowspan="2">level of request p</td>
+      <td colspan="6">effective level q</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td>TRACE</td>
+      <td>DEBUG</td>
+      <td>INFO</td>
+      <td>WARN</td>
+      <td>ERROR</td>
+      <td>OFF</td>
+   </tr>
+   <tr>
+      <td>TRACE</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+   </tr>
+   <tr>
+      <td>DEBUG</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+   </tr>
+   <tr>
+      <td>INFO</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+      <td>NO</td>
+   </tr>
+   <tr>
+      <td>WARN</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+      <td>NO</td>
+   </tr>
+   <tr>
+      <td>ERROR</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>NO</td>
+   </tr>
+   <tr>
+      <td></td>
+   </tr>
+</table>
 
 
 
