@@ -1,3 +1,6 @@
 {
-	"plugins": ["-highlight", "light-it"]
+	"plugins": [
+		"-highlight", 
+		"easyheightlight"
+	]
 }
