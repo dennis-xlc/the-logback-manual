@@ -123,33 +123,13 @@ This rule is at the heart of logback. It assumes that levels are ordered as foll
 
 In a more graphic way, here is how the selection rule works. In the following table, the vertical header shows the level of the logging request, designated by _**p**_, while the horizontal header shows effective level of the logger, designated by _**q**_. The intersection of the rows \(level request\) and columns \(effective level\) is the boolean resulting from the basic selection rule.
 
-
-|   | TRACE | DEBUG | INFO | WARN | ERROR | OFF |
-| :--- | :--- | :--- | :--- | :--- | :--- |:--- |
-| TRACE | YES | **NO** | **NO** | **NO** | **NO** | **NO** |
-| DEBUG | YES | YES | **NO** | **NO** | **NO** | **NO** |
-| INFO | YES | YES | YES | **NO** | **NO** | **NO** |
-| WARN | YES | YES | YES  | YES | **NO** | **NO** |
-| ERROR | YES | YES | YES | YES | YES | **NO** |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+|  | q=TRACE | q=DEBUG | q=INFO | q=WARN | q=ERROR | q=OFF |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **p=TRACE** | YES | **NO** | **NO** | **NO** | **NO** | **NO** |
+| **p=DEBUG** | YES | YES | **NO** | **NO** | **NO** | **NO** |
+| **p=INFO** | YES | YES | YES | **NO** | **NO** | **NO** |
+| **p=WARN** | YES | YES | YES | YES | **NO** | **NO** |
+| **p=ERROR** | YES | YES | YES | YES | YES | **NO** |
 
 
 
