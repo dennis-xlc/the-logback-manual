@@ -124,66 +124,28 @@ This rule is at the heart of logback. It assumes that levels are ordered as foll
 In a more graphic way, here is how the selection rule works. In the following table, the vertical header shows the level of the logging request, designated by _**p**_, while the horizontal header shows effective level of the logger, designated by _**q**_. The intersection of the rows \(level request\) and columns \(effective level\) is the boolean resulting from the basic selection rule.
 
 
+|   | TRACE | DEBUG | INFO | WARN | ERROR | OFF |
+| :--- | :--- | :--- | :--- | :--- | :--- |:--- |
+| TRACE | YES | **NO** | **NO** | **NO** | **NO** | **NO** |
+| DEBUG | YES | YES | **NO** | **NO** | **NO** | **NO** |
+| INFO | YES | YES | YES | **NO** | **NO** | **NO** |
+| WARN | YES | YES | YES  | YES | **NO** | **NO** |
+| ERROR | YES | YES | YES | YES | YES | **NO** |
 
-<table>
-   <tr>
-      <td rowspan="2">level of request p</td>
-      <td colspan="6">effective level q</td>
-   </tr>
-   <tr>
-      <td>TRACE</td>
-      <td>DEBUG</td>
-      <td>INFO</td>
-      <td>WARN</td>
-      <td>ERROR</td>
-      <td>OFF</td>
-   </tr>
-   <tr>
-      <td>TRACE</td>
-      <td>YES</td>
-      <td>NO</td>
-      <td>NO</td>
-      <td>NO</td>
-      <td>NO</td>
-      <td>NO</td>
-   </tr>
-   <tr>
-      <td>DEBUG</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>NO</td>
-      <td>NO</td>
-      <td>NO</td>
-      <td>NO</td>
-   </tr>
-   <tr>
-      <td>INFO</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>NO</td>
-      <td>NO</td>
-      <td>NO</td>
-   </tr>
-   <tr>
-      <td>WARN</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>NO</td>
-      <td>NO</td>
-   </tr>
-   <tr>
-      <td>ERROR</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>YES</td>
-      <td>NO</td>
-   </tr>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
