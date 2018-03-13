@@ -6,6 +6,16 @@
   * [First Baby Step](chapter-1-introduction-to-logback/first-baby-step.md)
   * [Building logback](chapter-1-introduction-to-logback/building-logback.md)
 * [Chapter 2: Architecture](chapter-2-architecture.md)
+  * [Logback's architecture](chapter-2-architecture/logbacks-architecture.md)
+  * [Logger, Appenders and Layouts](chapter-2-architecture/logger-appenders-and-layouts.md)
+    * Logger context
+    * Effective Level aka Level Inheritance
+    * Printing methods and the basic selection rule
+    * Retrieving Loggers
+    * Appenders and Layouts
+    * Parameterized logging
+    * A peek under the hood
+    * Performance
 * [Chapter 3: Configuration](chapter-3-configuration.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
