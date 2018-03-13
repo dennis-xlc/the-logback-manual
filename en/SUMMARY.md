@@ -3,6 +3,8 @@
 * [The Logback Manual](README.md)
 * [Chapter 1: Introduction to logback](chapter-1-introduction-to-logback.md)
   * [What is logback?](chapter-1-introduction-to-logback/what-is-logback.md)
+  * [First Baby Step](chapter-1-introduction-to-logback/first-baby-step.md)
+  * [Building logback](chapter-1-introduction-to-logback/building-logback.md)
 * [Chapter 2: Architecture](chapter-2-architecture.md)
 * [Chapter 3: Configuration](chapter-3-configuration.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
