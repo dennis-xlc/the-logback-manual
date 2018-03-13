@@ -25,6 +25,7 @@
     * [Invoking JoranConfigurator directly](chapter-3-configuration/configuration-in-logback/invoking-joranconfigurator-directly.md)
     * [Viewing status messages](chapter-3-configuration/configuration-in-logback/viewing-status-messages.md)
     * [Listening to status messages](chapter-3-configuration/configuration-in-logback/listening-to-status-messages.md)
+    * ["logback.statusListenerClass" system property](chapter-3-configuration/configuration-in-logback/logbackstatuslistenerclass-system-property.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
