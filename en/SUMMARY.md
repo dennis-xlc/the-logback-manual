@@ -13,7 +13,7 @@
     * [Printing methods and the basic selection rule](chapter-2-architecture/logger-appenders-and-layouts/printing-methods-and-the-basic-selection-rule.md)
     * [Retrieving Loggers](chapter-2-architecture/logger-appenders-and-layouts/retrieving-loggers.md)
     * [Appenders and Layouts](chapter-2-architecture/logger-appenders-and-layouts/appenders-and-layouts.md)
-    * Parameterized logging
+    * [Parameterized logging](chapter-2-architecture/logger-appenders-and-layouts/parameterized-logging.md)
     * A peek under the hood
     * Performance
 * [Chapter 3: Configuration](chapter-3-configuration.md)
