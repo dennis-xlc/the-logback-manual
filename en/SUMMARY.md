@@ -31,6 +31,7 @@
     * [Case sensitivity of tag names](chapter-3-configuration/configuration-file-syntax/case-sensitivity-of-tag-names.md)
     * [Configuring loggers](chapter-3-configuration/configuration-file-syntax/configuring-loggers.md)
     * [Configuring Appenders](chapter-3-configuration/configuration-file-syntax/configuring-appenders.md)
+    * [Setting the context name](chapter-3-configuration/configuration-file-syntax/setting-the-context-name.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
