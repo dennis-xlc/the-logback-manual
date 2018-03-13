@@ -32,6 +32,5 @@ After the logging event is fully formatted it is sent to its destination by each
 
 Here is a sequence UML diagram to show how everything works. You might want to click on the image to display its bigger version.
 
-![](/assets/underTheHoodSequence2_small.gif)
 
-
+![](/assets/underTheHoodSequence2.gif)
