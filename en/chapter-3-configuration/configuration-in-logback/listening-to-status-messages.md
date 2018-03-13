@@ -14,3 +14,19 @@ Here is [sample code](https://logback.qos.ch/xref/chapters/configuration/AddStat
    statusManager.add(onConsoleListener);
 ```
 
+Note that the registered status listener will only receive status events subsequent to its registration. It will not receive prior messages. Thus, it is usually a good idea to place status listener registration directives at top of the configuration file before other directives.
+
+It is also possible to register one or more status listeners within a configuration file. Here is an example.
+
+**Example: Registering a status listener** (_logback-examples/src/main/resources/chapters/configuration/onConsoleStatusListener.xml_)
+
+
+```
+<configuration>
+  <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />  
+
+  ... the rest of the configuration file  
+</configuration>
+```
+
+
