@@ -21,6 +21,7 @@
     * [Automatically configuring logback](chapter-3-configuration/configuration-in-logback/automatically-configuring-logback.md)
     * [Automatic configuration with logback-test.xml or logback.xml](chapter-3-configuration/configuration-in-logback/automatic-configuration-with-logback-testxml-or-logbackxml.md)
     * [Specifying the location of the default configuration file as a system property](chapter-3-configuration/configuration-in-logback/specifying-the-location-of-the-default-configuration-file-as-a-system-property.md)
+    * [Automatically reloading configuration file upon modification](chapter-3-configuration/configuration-in-logback/automatically-reloading-configuration-file-upon-modification.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
