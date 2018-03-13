@@ -9,7 +9,7 @@
   * [Logback's architecture](chapter-2-architecture/logbacks-architecture.md)
   * [Logger, Appenders and Layouts](chapter-2-architecture/logger-appenders-and-layouts.md)
     * [Logger context](chapter-2-architecture/logger-appenders-and-layouts/logger-context.md)
-    * Effective Level aka Level Inheritance
+    * [Effective Level aka Level Inheritance](chapter-2-architecture/logger-appenders-and-layouts/effective-level-aka-level-inheritance.md)
     * Printing methods and the basic selection rule
     * Retrieving Loggers
     * Appenders and Layouts
