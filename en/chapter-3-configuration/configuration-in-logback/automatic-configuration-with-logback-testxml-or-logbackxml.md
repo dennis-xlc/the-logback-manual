@@ -95,3 +95,24 @@ Setting `debug="true"` within the `<configuration>` element will output status i
 2. the configuration file is well-formed XML.
 
 
+If any of these two conditions is not fulfilled, Joran cannot interpret the `debug` attribute since the configuration file cannot be read. If the configuration file is found but is malformed, then logback will detect the error condition and automatically print its internal status on the console. However, if the configuration file cannot be found, logback will not automatically print its status data, since this is not necessarily an error condition. Programmatically invoking **_StatusPrinter.print()_** as shown in the `MyApp2` application above ensures that status information is printed in every case.
+
+`FORCING STATUS OUTPUT` In the absence of status messages, tracking down a rogue _logback.xml_ configuration file can be difficult, especially in production where the application source cannot be easily modified. To help identify the location of a rogue configuration file, you can set a **StatusListener** via the "`logback.statusListenerClass`" system property (defined below) to force output of status messages. The "`logback.statusListenerClass`" system property can also be used to silence output automatically generated in case of errors.
+
+By the way, setting `debug="true"` is strictly equivalent to installing an **OnConsoleStatusListener**. Status listeners are disccussed further below. The installation of **OnConsoleStatusListener** is shown next.
+
+
+**Example: Registering a status listener** (_logback-examples/src/main/resources/chapters/configuration/onConsoleStatusListener.xml_)
+
+
+```
+<configuration>
+  <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />  
+
+  ... the rest of the configuration file  
+</configuration>
+```
+
+Enabling output of status data, either via the debug attribute or equivalently by installing **OnConsoleStatusListener**, will go a long way in helping you diagnose logback issues. As such, enabling logback status data is very highly recommended and should be considered as a recourse of **first** resort.
+
+
