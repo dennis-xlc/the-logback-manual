@@ -214,8 +214,6 @@ The table below shows an example:
 | security | A-sec | false | A-sec | No appender accumulation since the additivity flag is set to false. Only appender A-sec will be used. |
 | security.access | none | true | A-sec | Only appenders of "security" because the additivity flag in "security" is set to false. |
 
-
-
 More often than not, users wish to customize not only the output destination but also the output format. This is accomplished by associating a _layout_ with an appender. The layout is responsible for formatting the logging request according to the user's wishes, whereas an appender takes care of sending the formatted output to its destination. The **PatternLayout**, part of the standard logback distribution, lets the user specify the output format according to conversion patterns similar to the C language _**printf**_ function.
 
 For example, the **PatternLayout** with the conversion pattern "**%-4relative \[%thread\] %-5level %logger{32} - %msg%n**" will output something akin to:
@@ -226,19 +224,27 @@ For example, the **PatternLayout** with the conversion pattern "**%-4relative \[
 
 The first field is the number of milliseconds elapsed since the start of the program. The second field is the thread making the log request. The third field is the level of the log request. The fourth field is the name of the logger associated with the log request. The text after the '-' is the message of the request.
 
-
-
 ### Parameterized logging
 
 Given that loggers in logback-classic implement the [SLF4J's Logger interface](http://www.slf4j.org/api/org/slf4j/Logger.html), certain printing methods admit more than one parameter. These printing method variants are mainly intended to improve performance while minimizing the impact on the readability of the code.
 
 For some Logger `logger`, writing,
 
-```
+```java
 logger.debug("Entry number: " + i + " is " + String.valueOf(entry[i]));
 ```
 
 incurs the cost of constructing the message parameter, that is converting both integer `i` and `entry[i]` to a String, and concatenating intermediate strings. This is regardless of whether the message will be logged or not.
 
 One possible way to avoid the cost of parameter construction is by surrounding the log statement with a test. Here is an example.
+
+```java
+if(logger.isDebugEnabled()) { 
+  logger.debug("Entry number: " + i + " is " + String.valueOf(entry[i]));
+}
+```
+
+This way you will not incur the cost of parameter construction if debugging is disabled for `logger`. On the other hand, if the logger is enabled for the DEBUG level, you will incur the cost of evaluating whether the logger is enabled or not, twice: once in 
+
+`debugEnabled`and once in  `debug`. In practice, this overhead is insignificant because evaluating a logger takes less than 1% of the time it takes to actually log a request.
 
