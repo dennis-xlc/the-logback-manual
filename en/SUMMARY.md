@@ -14,7 +14,7 @@
     * [Retrieving Loggers](chapter-2-architecture/logger-appenders-and-layouts/retrieving-loggers.md)
     * [Appenders and Layouts](chapter-2-architecture/logger-appenders-and-layouts/appenders-and-layouts.md)
     * [Parameterized logging](chapter-2-architecture/logger-appenders-and-layouts/parameterized-logging.md)
-    * A peek under the hood
+    * [A peek under the hood](chapter-2-architecture/logger-appenders-and-layouts/a-peek-under-the-hood.md)
     * Performance
 * [Chapter 3: Configuration](chapter-3-configuration.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
