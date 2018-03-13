@@ -23,6 +23,7 @@
     * [Specifying the location of the default configuration file as a system property](chapter-3-configuration/configuration-in-logback/specifying-the-location-of-the-default-configuration-file-as-a-system-property.md)
     * [Automatically reloading configuration file upon modification](chapter-3-configuration/configuration-in-logback/automatically-reloading-configuration-file-upon-modification.md)
     * [Invoking JoranConfigurator directly](chapter-3-configuration/configuration-in-logback/invoking-joranconfigurator-directly.md)
+    * [Viewing status messages](chapter-3-configuration/configuration-in-logback/viewing-status-messages.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
