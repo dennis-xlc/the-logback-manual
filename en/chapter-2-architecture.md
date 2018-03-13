@@ -232,13 +232,13 @@ The first field is the number of milliseconds elapsed since the start of the pro
 
 Given that loggers in logback-classic implement the [SLF4J's Logger interface](http://www.slf4j.org/api/org/slf4j/Logger.html), certain printing methods admit more than one parameter. These printing method variants are mainly intended to improve performance while minimizing the impact on the readability of the code.
 
-For some Logger`logger`, writing,
+For some Logger `logger`, writing,
 
 ```
 logger.debug("Entry number: " + i + " is " + String.valueOf(entry[i]));
 ```
 
-incurs the cost of constructing the message parameter, that is converting both integer `i`and `entry[i]`to a String, and concatenating intermediate strings. This is regardless of whether the message will be logged or not.
+incurs the cost of constructing the message parameter, that is converting both integer `i` and `entry[i]` to a String, and concatenating intermediate strings. This is regardless of whether the message will be logged or not.
 
 One possible way to avoid the cost of parameter construction is by surrounding the log statement with a test. Here is an example.
 
