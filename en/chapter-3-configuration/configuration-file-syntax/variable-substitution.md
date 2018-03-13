@@ -13,3 +13,115 @@ As they often come in handy, the `HOSTNAME` and `CONTEXT_NAME` variables are aut
 Variables can be defined one at a time in the configuration file itself or loaded wholesale from an external properties file or an external resource. For historical reasons, the XML element for defining variables is `<property>` although in logback 1.0.7 and later the element `<variable>` can be used interchangeably.
 
 The next example shows a variable declared at the beginning of the configuration file. It is then used further down the file to specify the location of the output file.
+
+**Example: Simple Variable substitution** (_logback-examples/src/main/resources/chapters/configuration/variableSubstitution1.xml_)
+
+```
+<configuration>
+
+  <property name="USER_HOME" value="/home/sebastien" />
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${USER_HOME}/myApp.log</file>
+    <encoder>
+      <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="debug">
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
+```
+
+The next example shows the use of a System property to achieve the same result. The property is not declared in the configuration file, thus logback will look for it in the System properties. Java system properties can be set on the command line as shown next:
+
+
+```
+java -DUSER_HOME="/home/sebastien" MyApp2
+```
+
+**Example: System Variable substitution** (_logback-examples/src/main/resources/chapters/configuration/variableSubstitution2.xml_)
+
+
+```
+<configuration>
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${USER_HOME}/myApp.log</file>
+    <encoder>
+      <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="debug">
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
+```
+
+When multiple variables are needed, it may be more convenient to create a separate file that will contain all the variables. Here is how one can do such a setup.
+
+**Example: Variable substitution using a separate file** (_logback-examples/src/main/resources/chapters/configuration/variableSubstitution3.xml_)
+
+
+```
+<configuration>
+
+  <property file="src/main/java/chapters/configuration/variables1.properties" />
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+     <file>${USER_HOME}/myApp.log</file>
+     <encoder>
+       <pattern>%msg%n</pattern>
+     </encoder>
+   </appender>
+
+   <root level="debug">
+     <appender-ref ref="FILE" />
+   </root>
+</configuration>
+```
+
+This configuration file contains a reference to a file named _variables1.properties_. The variables contained in that file will be read and then defined within local scope. Here is what the _variable.properties_ file might look like.
+
+**Example: Variable file** (_logback-examples/src/main/resources/chapters/configuration/variables1.properties_)
+
+
+```
+USER_HOME=/home/sebastien
+```
+
+You may also reference a resource on the class path instead of a file.
+
+```
+<configuration>
+
+  <property resource="resource1.properties" />
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+     <file>${USER_HOME}/myApp.log</file>
+     <encoder>
+       <pattern>%msg%n</pattern>
+     </encoder>
+   </appender>
+
+   <root level="debug">
+     <appender-ref ref="FILE" />
+   </root>
+</configuration>
+```
+
+#### Scopes
+
+A property can be defined for insertion in **_local scope_**, in **_context scope_**, or in system scope. Local scope is the default. Although it is possible to read variables from the OS environment, it is not possible to write into the OS environment.
+
+
+
+
+
+
+
+
+
+
