@@ -1,0 +1,7 @@
+### Configuring loggers, or the _<logger>_ element
+
+At this point you should have at least some understanding of level inheritance and the basic selection rule. Otherwise, and unless you are an Egyptologist, logback configuration will be no more meaningful to you than are hieroglyphics.
+
+A logger is configured using the `<logger>` element. A `<logger>` element takes exactly one mandatory `name` attribute, an optional `level` attribute, and an optional `additivity` attribute, admitting the values `true` or `false`. The value of the `level` attribute admitting one of the case-insensitive string values **TRACE**, **DEBUG**, **INFO**, **WARN**, **ERROR**, **ALL** or **OFF**. The special case-insensitive value **INHERITED**, or its synonym **NULL**, will force the level of the logger to be inherited from higher up in the hierarchy. This comes in handy if you set the level of a logger and later decide that it should inherit its level.
+
+The `<logger>` element may contain zero or more `<appender-ref>` elements; each appender thus referenced is added to the named logger. Note that unlike log4j, logback-classic does not close nor remove any previously referenced appenders when configuring a given logger.
