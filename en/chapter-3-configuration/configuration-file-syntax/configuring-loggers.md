@@ -1,4 +1,4 @@
-### Configuring loggers, or the \<logger\> element
+### Configuring loggers, or the &ltlogger&gt element
 
 At this point you should have at least some understanding of level inheritance and the basic selection rule. Otherwise, and unless you are an Egyptologist, logback configuration will be no more meaningful to you than are hieroglyphics.
 
@@ -7,7 +7,7 @@ A logger is configured using the `<logger>` element. A `<logger>` element takes 
 The `<logger>` element may contain zero or more `<appender-ref>` elements; each appender thus referenced is added to the named logger. Note that unlike log4j, logback-classic does not close nor remove any previously referenced appenders when configuring a given logger.
 
 
-#### Configuring the root logger, or the <root> element
+#### Configuring the root logger, or the &ltroot&gt element
 
 The `<root>` element configures the root logger. It supports a single attribute, namely the `level` attribute. It does not allow any other attributes because the additivity flag does not apply to the root logger. Moreover, since the root logger is already named as `"ROOT"`, it does not allow a name attribute either. The value of the level attribute can be one of the case-insensitive strings **TRACE**, **DEBUG**, **INFO**, **WARN**, **ERROR**, **ALL** or **OFF**. Note that the level of the root logger cannot be set to **INHERITED** or **NULL**.
 
@@ -15,3 +15,4 @@ Similarly to the `<logger>` element, the `<root>` element may contain zero or mo
 
 #### Example
 
+Setting the level of a logger or root logger is as simple as declaring it and setting its level, as the next example illustrates. Suppose we are no longer interested in seeing any DEBUG messages from any component belonging to the "chapters.configuration" package. The following configuration file shows how to achieve that.
