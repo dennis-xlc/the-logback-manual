@@ -314,3 +314,7 @@ After the logging event is fully formatted it is sent to its destination by each
 Here is a sequence UML diagram to show how everything works. You might want to click on the image to display its bigger version.
 
 ![](/assets/underTheHoodSequence2_small.gif)
+
+
+### Performance
+One of the often-cited arguments against logging is its computational cost. This is a legitimate concern as even moderately-sized applications can generate thousands of log requests. Much of our development effort is spent measuring and tweaking logback's performance. Independently of these efforts, the user should still be aware of the following performance issues.
