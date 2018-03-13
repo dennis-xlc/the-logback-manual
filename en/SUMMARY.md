@@ -10,7 +10,7 @@
   * [Logger, Appenders and Layouts](chapter-2-architecture/logger-appenders-and-layouts.md)
     * [Logger context](chapter-2-architecture/logger-appenders-and-layouts/logger-context.md)
     * [Effective Level aka Level Inheritance](chapter-2-architecture/logger-appenders-and-layouts/effective-level-aka-level-inheritance.md)
-    * Printing methods and the basic selection rule
+    * [Printing methods and the basic selection rule](chapter-2-architecture/logger-appenders-and-layouts/printing-methods-and-the-basic-selection-rule.md)
     * Retrieving Loggers
     * Appenders and Layouts
     * Parameterized logging
