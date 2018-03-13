@@ -17,6 +17,7 @@
     * [A peek under the hood](chapter-2-architecture/logger-appenders-and-layouts/a-peek-under-the-hood.md)
     * [Performance](chapter-2-architecture/logger-appenders-and-layouts/performance.md)
 * [Chapter 3: Configuration](chapter-3-configuration.md)
+  * [Configuration in logback](chapter-3-configuration/configuration-in-logback.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
