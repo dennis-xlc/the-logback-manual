@@ -247,4 +247,96 @@ At the present time, logback does ships with two fairly simple implementations o
 | **[ResourceExistsPropertyDefiner](https://logback.qos.ch/apidocs/ch/qos/logback/core/property/FileExistsPropertyDefiner.html)** | Set the named variable to "true" if the `resource` specified by the user is available on the class path, to "false" otherwise. |
 
 
+#### Conditional processing of configuration files
+
+Developers often need to juggle between several logback configuration files targeting different environments such as development, testing and production. These configuration files have substantial parts in common differing only in a few places. To avoid duplication, logback supports conditional processing of configuration files with the help of `<if>`, `<then>` and `<else>` elements so that a single configuration file can adequately target several environments. Note that conditional processing requires the [Janino library](https://logback.qos.ch/setup.html#janino).
+
+The general format for conditional statements is shown below.
+
+
+```
+   <!-- if-then form -->
+   <if condition="some conditional expression">
+    <then>
+      ...
+    </then>
+  </if>
+  
+  <!-- if-then-else form -->
+  <if condition="some conditional expression">
+    <then>
+      ...
+    </then>
+    <else>
+      ...
+    </else>    
+  </if>
+```
+
+The condition is a Java expression in which only context properties or system properties are accessible. For a key passed as argument, the **_property()_** or its shorter equivalent **_p()_** methods return the String value of the property. For example, to access the value of a property with key "k", you would write **_property("k")_** or equivalently **_p("k")_**. If the property with key "k" is undefined, the property method will return the empty string and not null. This avoids the need to check for null values.
+
+The **_isDefined()_** method can be used to check whether a property is defined. For example, to check whether the property "k" is defined you would write **_isDefined("k")_** Similarly, if you need to check whether a property is null, the **_isNull()_** method is provided. Example: **_isNull("k")_**.
+
+
+```
+<configuration debug="true">
+
+  <if condition='property("HOSTNAME").contains("torino")'>
+    <then>
+      <appender name="CON" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+          <pattern>%d %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+      </appender>
+      <root>
+        <appender-ref ref="CON" />
+      </root>
+    </then>
+  </if>
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${randomOutputDir}/conditional.log</file>
+    <encoder>
+      <pattern>%d %-5level %logger{35} - %msg %n</pattern>
+   </encoder>
+  </appender>
+
+  <root level="ERROR">
+     <appender-ref ref="FILE" />
+  </root>
+</configuration>
+```
+
+Conditional processing is supported _anywhere_ within the `<configuration>` element. Nested if-then-else statements are also supported. However, XML syntax is awfully cumbersome and is ill suited as the foundation of a general purpose programming language. Consequently, too many conditionals will quickly render your configuration files incomprehensible to subsequent readers, including yourself.
+
+
+#### Obtaining variables from JNDI
+
+Under certain circumstances, you may want to make use of env-entries stored in JNDI. The `<insertFromJNDI>` configuration directive extracts an env-entry stored in JNDI and inserts the property in local scope with key specified by the `as` attribute. As all properties, it is possible to insert the new property into a different scope with the help of the `scope` attribute.
+
+**Example: Insert as properties env-entries obtained via JNDI** (_logback-examples/src/main/resources/chapters/configuration/insertFromJNDI.xml_)
+
+
+```
+<configuration>
+  <insertFromJNDI env-entry-name="java:comp/env/appName" as="appName" />
+  <contextName>${appName}</contextName>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d ${CONTEXT_NAME} %level %msg %logger{50}%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="CONSOLE" />
+  </root>
+</configuration>
+```
+
+In this last example, the "java:comp/env/appName" env-entry is inserted as the `appName` property. Note that the `<contextName>` directive sets the context name based on the value of the `appName` property inserted by the previous `<insertFromJNDI>` directive.
+
+
+
+
 
