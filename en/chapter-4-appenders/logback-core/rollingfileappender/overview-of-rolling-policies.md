@@ -56,3 +56,74 @@ Any forward or backward slash characters are interpreted as folder (directory) s
 | fileNamePattern | Rollover schedule | Example |
 | :--- | :--- | :--- |
 | _/wombat/foo.%d.gz_  | Daily rollover (at midnight) with automatic GZIP compression of the archived files. | `file` property not set: During November 23rd, 2009, logging output will go to the file _/wombat/foo.2009-11-23_. However, at midnight that file will be compressed to become _/wombat/foo.2009-11-23.gz_. For the 24th of November, logging output will be directed to _/wombat/folder/foo.2009-11-24_ until it's rolled over at the beginning of the next day.<br><br>`file` property set to _/wombat/foo.txt_: During November 23rd, 2009, logging output will go to the file _/wombat/foo.txt_. At midnight that file will be compressed and renamed as _/wombat/foo.2009-11-23.gz_. A new _/wombat/foo.txt_ file will be created where logging output will go for the rest of November 24rd. At midnight November 24th, _/wombat/foo.txt_ will be compressed and renamed as _/wombat/foo.2009-11-24.gz_ and so on.|
+
+
+The `fileNamePattern` serves a dual purpose. First, by studying the pattern, logback computes the requested rollover periodicity. Second, it computes each archived file's name. Note that it is possible for two different patterns to specify the same periodicity. The patterns _yyyy-MM_ and _yyyy@MM_ both specify monthly rollover, although the resulting archive files will carry different names.
+
+By setting the `file` property you can decouple the location of the active log file and the location of the archived log files. The logging output will be targeted into the file specified by the `file` property. It follows that the name of the active log file will not change over time. However, if you choose to omit the `file` property, then the active file will be computed anew for each period based on the value of `fileNamePattern`. By leaving the `file` option unset you can avoid file [renaming errors](https://logback.qos.ch/codes.html#renamingError) which occur while there exist external file handles referencing log files during roll over.
+
+The `maxHistory` property controls the maximum number of archive files to keep, deleting older files. For example, if you specify monthly rollover, and set `maxHistory` to 6, then 6 months worth of archives files will be kept with files older than 6 months deleted. Note as old archived log files are removed, any folders which were created for the purpose of log file archiving will be removed as appropriate.
+
+For various technical reasons, rollovers are not clock-driven but depend on the arrival of logging events. For example, on 8th of March 2002, assuming the `fileNamePattern` is set to _yyyy-MM-dd_ (daily rollover), the arrival of the first event after midnight will trigger a rollover. If there are no logging events during, say 23 minutes and 47 seconds after midnight, then rollover will actually occur at 00:23'47 AM on March 9th and not at 0:00 AM. Thus, depending on the arrival rate of events, rollovers might be triggered with some latency. However, regardless of the delay, the rollover algorithm is known to be correct, in the sense that all logging events generated during a certain period will be output in the correct file delimiting that period.
+
+Here is a sample configuration for **RollingFileAppender** in conjunction with a **TimeBasedRollingPolicy**.
+
+**Example: Sample configuration of a RollingFileAppender using a TimeBasedRollingPolicy** (_logback-examples/src/main/resources/chapters/appenders/conf/logback-RollingTimeBased.xml_)
+
+
+```
+<configuration>
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logFile.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+      <!-- keep 30 days' worth of history capped at 3GB total size -->
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>3GB</totalSizeCap>
+
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+    </encoder>
+  </appender> 
+
+  <root level="DEBUG">
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
+```
+
+The next configuration sample illustrates the use of **RollingFileAppender** associated with **TimeBasedRollingPolicy** in `prudent` mode.
+
+**Example: Sample configuration of a _RollingFileAppender_ using a _TimeBasedRollingPolicy_** (_logback-examples/src/main/resources/chapters/appenders/conf/logback-PrudentTimeBasedRolling.xml_)
+
+
+```
+<configuration>
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- Support multiple-JVM writing to the same log file -->
+    <prudent>true</prudent>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory> 
+      <totalSizeCap>3GB</totalSizeCap>
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+    </encoder>
+  </appender> 
+
+  <root level="DEBUG">
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
+```
+
+
+
+
+
