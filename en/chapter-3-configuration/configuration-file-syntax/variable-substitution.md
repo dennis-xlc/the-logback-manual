@@ -242,5 +242,9 @@ At the present time, logback does ships with two fairly simple implementations o
 
 | Implementation name | Description |
 | :--- | :--- |
+| **[CanonicalHostNamePropertyDefiner](https://logback.qos.ch/apidocs/ch/qos/logback/core/property/CanonicalHostNamePropertyDefiner.html)** | Set the named variable to the canonical host name of the local host. Note that obtaining the canonical host name may take several seconds. |
+| **[FileExistsPropertyDefiner](https://logback.qos.ch/apidocs/ch/qos/logback/core/property/FileExistsPropertyDefiner.html)** | Set the named variable to "true" if the file specified by `path` property exists, to "false" otherwise. |
+| **[ResourceExistsPropertyDefiner](https://logback.qos.ch/apidocs/ch/qos/logback/core/property/FileExistsPropertyDefiner.html)** | Set the named variable to "true" if the `resource` specified by the user is available on the class path, to "false" otherwise. |
+
 
 
