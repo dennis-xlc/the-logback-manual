@@ -25,3 +25,34 @@ Let us go over a more concrete example of the fixed window rollover policy. Supp
 | 4 | foo.log | foo1.log,<br>foo2.log,<br>foo3.log  | In this and subsequent rounds, the rollover begins by deleting _foo3.log_. Other files are renamed by incrementing their index as shown in previous steps. In this and subsequent rollovers, there will be three archive logs and one active log file. |
 
 
+The configuration file below gives an example of configuring **RollingFileAppender** and **FixedWindowRollingPolicy**. Note that the `File` option is mandatory even if it contains some of the same information as conveyed with the `fileNamePattern` option.
+
+**Example: Sample configuration of a RollingFileAppender using a FixedWindowRollingPolicy** (_logback-examples/src/main/resources/chapters/appenders/conf/logback-RollingFixedWindow.xml_)
+
+
+```
+<configuration>
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>test.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>tests.%i.log.zip</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>3</maxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>5MB</maxFileSize>
+    </triggeringPolicy>
+    <encoder>
+      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+    </encoder>
+  </appender>
+        
+  <root level="DEBUG">
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
+```
+
+
