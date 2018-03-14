@@ -39,6 +39,7 @@
   * [What is an Appender?](chapter-4-appenders/what-is-an-appender.md)
   * [AppenderBase](chapter-4-appenders/appenderbase.md)
   * [Logback-core](chapter-4-appenders/logback-core.md)
+    * [OutputStreamAppender](chapter-4-appenders/logback-core/outputstreamappender.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
 * [Chapter 7: Filters](chapter-7-filters.md)
