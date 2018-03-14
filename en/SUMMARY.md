@@ -37,6 +37,7 @@
   * [Adding a context listener](chapter-3-configuration/adding-a-context-listener.md)
 * [Chapter 4: Appenders](chapter-4-appenders.md)
   * [What is an Appender?](chapter-4-appenders/what-is-an-appender.md)
+  * [AppenderBase](chapter-4-appenders/appenderbase.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
 * [Chapter 7: Filters](chapter-7-filters.md)
