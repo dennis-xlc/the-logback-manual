@@ -151,5 +151,95 @@ The `scope` attribute of the `<property>` element, <define> element or the `<ins
 In the above example, given that the `nodeId` property is defined in the context scope, it will be available in every logging event, even those sent to remote hosts via serialization.
 
 
+#### Default values for variables
+
+Under certain circumstances, it may be desirable for a variable to have a default value if it is not declared or its value is null. As in the [Bash shell](http://tldp.org/LDP/abs/html/parameter-substitution.html), default values can be specified using the "**:-**" operator. For example, assuming the variable named `aName` is not defined, "**${aName:-golden}**" will be interpreted as "**golden**".
+
+#### Nested variables
+
+Variable nesting is fully supported. Both the name, default-value and value definition of a variable can reference other variables.
+
+
+##### value nesting
+
+The value definition of a variable can contain references to other variables. Suppose you wish to use variables to specify not only the destination directory but also the file name, and combine those two variables in a third variable called "destination". The properties file shown below gives an example.
+
+**Example: Nested variable references** (_logback-examples/src/main/resources/chapters/configuration/variables2.properties_)
+
+
+```
+USER_HOME=/home/sebastien
+fileName=myApp.log
+destination=${USER_HOME}/${fileName}
+```
+
+Note that in the properties file above, "destination" is composed from two other variables, namely "**USER_HOME**" and "**fileName**".
+**
+Example: Variable substitution using a separate file** (_logback-examples/src/main/resources/chapters/configuration/variableSubstitution4.xml_)
+
+
+```
+<configuration>
+
+  <property file="variables2.properties" />
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${destination}</file>
+    <encoder>
+      <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="debug">
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
+```
+
+##### name nesting
+
+When referencing a variable, the variable name may contain a reference to another variable. For example, if the variable named "userid" is assigned the value "alice", then "${${userid}.password}" references the variable with the name "alice.password".
+
+##### default value nesting
+
+The default value of a variable can reference a another variable. For example, assuming the variable 'id' is unassigned and the variable 'userid' is assigned the value "alice", then the expression "${id:-${userid}}" will return "alice".
+
+#### HOSTNAME property
+
+As it often comes in handy, the `HOSTNAME` property is defined automatically during configuration with context scope.
+
+#### CONTEXT_NAME property
+
+As its name indicates, the `CONTEXT_NAME` property corresponds to the name of the current logging context.
+
+#### Setting a timestamp
+
+The `timestamp` element can define a property according to current date and time. The `timestamp` element is explained in a subsequent chapter.
+
+#### Defining properties on the fly
+
+You may define properties dynamically using the `<define>` element. The define element takes two mandatory attributes: `name` and `class`. The `name` attribute designates the name of the property to set whereas the `class` attribute designates any class implementing the **PropertyDefiner** interface. The value returned by the **_getPropertyValue()_** method of the **PropertyDefiner** instance will be the value of the named property. You may also specify a scope for the named property by specifying a `scope` attribute.
+
+Here is an example.
+
+
+```
+<configuration>
+
+  <define name="rootLevel" class="a.class.implementing.PropertyDefiner">
+    <shape>round</shape>
+    <color>brown</color>
+    <size>24</size>
+  </define>
+ 
+  <root level="${rootLevel}"/>
+</configuration>
+```
+
+In the above example, shape, color and size are properties of "**a.class.implementing.PropertyDefiner**". As long as there is a setter for a given property in your implementation of the **PropertyDefiner** instance, logback will inject the appropriate values as specified in the configuration file.
+
+At the present time, logback does ships with two fairly simple implementations of **PropertyDefiner**.
+
+
 
 
