@@ -42,6 +42,7 @@
     * [OutputStreamAppender](chapter-4-appenders/logback-core/outputstreamappender.md)
     * [ConsoleAppender](chapter-4-appenders/logback-core/consoleappender.md)
     * [FileAppender](chapter-4-appenders/logback-core/fileappender.md)
+    * [RollingFileAppender](chapter-4-appenders/logback-core/rollingfileappender.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
 * [Chapter 7: Filters](chapter-7-filters.md)
