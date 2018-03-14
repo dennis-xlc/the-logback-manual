@@ -35,8 +35,18 @@ Again, please note the mandatory `<included>` element.
 
 The contents to include can be referenced as a file, as a resource, or as a URL.
 
-* As a file:
+* **As a file:**
+  
   To include a file use the file attribute. You can use relative paths but note that the current directory is defined by the application and is not necessarily related to the path of the configuration file.
+
+* **As a resource:**
+
+  To include a resource, i.e a file found on the class path, use the resource attribute.
+  
+  ```
+  <include resource="includedConfig.xml"/>
+  ```
+
 
 
 
