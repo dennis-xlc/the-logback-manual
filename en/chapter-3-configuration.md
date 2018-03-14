@@ -1,3 +1,5 @@
+# Chapter 3: Logback Configuration
+
 > In symbols one observes an advantage in discovery which is greatest when they express the exact nature of a thing briefly and, as it were, picture it; then indeed the labor of thought is wonderfully diminished.
 **—GOTTFRIED WILHELM LEIBNIZ**
 

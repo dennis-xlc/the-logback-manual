@@ -16,7 +16,7 @@
     * [Parameterized logging](chapter-2-architecture/logger-appenders-and-layouts/parameterized-logging.md)
     * [A peek under the hood](chapter-2-architecture/logger-appenders-and-layouts/a-peek-under-the-hood.md)
     * [Performance](chapter-2-architecture/logger-appenders-and-layouts/performance.md)
-* [Chapter 3: Configuration](chapter-3-configuration.md)
+* [Chapter 3: Logback Configuration](chapter-3-configuration.md)
   * [Configuration in logback](chapter-3-configuration/configuration-in-logback.md)
     * [Automatically configuring logback](chapter-3-configuration/configuration-in-logback/automatically-configuring-logback.md)
     * [Automatic configuration with logback-test.xml or logback.xml](chapter-3-configuration/configuration-in-logback/automatic-configuration-with-logback-testxml-or-logbackxml.md)
