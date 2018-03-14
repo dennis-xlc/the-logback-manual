@@ -240,6 +240,7 @@ In the above example, shape, color and size are properties of "**a.class.impleme
 
 At the present time, logback does ships with two fairly simple implementations of **PropertyDefiner**.
 
-
+| Implementation name | Description |
+| :--- | :--- |
 
 
