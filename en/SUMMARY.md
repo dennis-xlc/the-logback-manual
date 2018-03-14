@@ -48,6 +48,7 @@
       * [Size and time based rolling policy](chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.md)
       * [Fixed window rolling policy](chapter-4-appenders/logback-core/rollingfileappender/fixed-window-rolling-policy.md)
       * [Overview of triggering policies](chapter-4-appenders/logback-core/rollingfileappender/overview-of-triggering-policies.md)
+      * [Size based triggering policy](chapter-4-appenders/logback-core/rollingfileappender/size-based-triggering-policy.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
 * [Chapter 7: Filters](chapter-7-filters.md)
