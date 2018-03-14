@@ -47,6 +47,24 @@ The contents to include can be referenced as a file, as a resource, or as a URL.
   <include resource="includedConfig.xml"/>
   ```
 
+* **As a URL:**
+
+  To include the contents of a URL use the url attribute.
+  
+  ```
+  <include url="http://some.host.com/includedConfig.xml"/>
+  ```
+
+If it cannot find the file to be included, logback will complain by printing a status message. In case the included file is optional, you can suppress the warning message by setting `optional` attribute to **true** in the `<include>` element.
+
+
+```
+<include optional="true" ..../>
+```
+
+
+  
+
 
 
 
