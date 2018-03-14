@@ -4,8 +4,8 @@
 
 | Property Name | Type | Description |
 | :--- | :--- | :--- |
-| **encoder** | **[Encoder](https://logback.qos.ch/xref/ch/qos/logback/core/encoder/Encoder.html)** | Determines the manner in which an event is written to the underlying **OutputStreamAppender**. Encoders are described in a dedicated chapter. |
-| **immediateFlush** | boolean | The default value for `immediateFlush` is 'true'. Immediate flushing of the output stream ensures that logging events are immediately written out and will not be lost in case your application exits without properly closing appenders. On the other hand, setting this property to 'false' is likely to quadruple (your mileage may vary) logging throughput. Again, if `immediateFlush` is set to 'false' and if appenders are not closed properly when your application exits, then logging events not yet written to disk may be lost. |
+| `encoder` | **[Encoder](https://logback.qos.ch/xref/ch/qos/logback/core/encoder/Encoder.html)** | Determines the manner in which an event is written to the underlying **OutputStreamAppender**. Encoders are described in a dedicated chapter. |
+| `immediateFlush` | boolean | The default value for `immediateFlush` is 'true'. Immediate flushing of the output stream ensures that logging events are immediately written out and will not be lost in case your application exits without properly closing appenders. On the other hand, setting this property to 'false' is likely to quadruple (your mileage may vary) logging throughput. Again, if `immediateFlush` is set to 'false' and if appenders are not closed properly when your application exits, then logging events not yet written to disk may be lost. |
 
 The **OutputStreamAppender** is the super-class of three other appenders, namely **ConsoleAppender**, **FileAppender** which in turn is the super class of **RollingFileAppender**. The next figure illustrates the class diagram for **OutputStreamAppender** and its subclasses.
 
