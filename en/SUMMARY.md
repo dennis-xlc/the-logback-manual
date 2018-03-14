@@ -43,6 +43,7 @@
     * [ConsoleAppender](chapter-4-appenders/logback-core/consoleappender.md)
     * [FileAppender](chapter-4-appenders/logback-core/fileappender.md)
     * [RollingFileAppender](chapter-4-appenders/logback-core/rollingfileappender.md)
+      * [Overview of rolling policies](chapter-4-appenders/logback-core/rollingfileappender/overview-of-rolling-policies.md)
 * [Chapter 5: Encoders](chapter-5-encoders.md)
 * [Chapter 6: Layouts](chapter-6-layouts.md)
 * [Chapter 7: Filters](chapter-7-filters.md)
